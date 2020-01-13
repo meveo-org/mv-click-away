@@ -20,4 +20,4 @@ To experiment with the MvClickAway component.
 </mv-click-away>
 ```
 
-You can also check this [demo](https://manaty.net/mv-click-away/)
+You can also check this [demo](https://click-away.meveo.org/)
