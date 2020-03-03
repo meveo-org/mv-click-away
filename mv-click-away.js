@@ -7,11 +7,11 @@ export class MvClickAway extends LitElement {
 
   static get styles() {
     return css`
-			:host {
-				font-family: var(--font-family, Arial);
-				font-size: var(--font-size-m, 10pt);				
+      :host {
+        font-family: var(--font-family, Arial);
+        font-size: var(--font-size-m, 10pt);				
       }
-		`;
+    `;
   }
 
   render() {

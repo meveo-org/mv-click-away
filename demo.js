@@ -1,12 +1,11 @@
 import { LitElement, html, css } from "lit-element";
 import "./mv-click-away.js";
-import "mv-font-awesome";
 
 export class MvClickAwayDemo extends LitElement {
   static get properties() {
     return {
       showMessage: { type: Boolean, attribute: true },
-      open: { type: Boolean, attribute: true }
+      theme: { type: String, attribute: true }
     };
   }
 
@@ -24,17 +23,6 @@ export class MvClickAwayDemo extends LitElement {
         margin: 20px auto;
       }
       
-      mv-fa[icon="lightbulb"] {
-        font-size: 50px;
-        cursor: pointer;
-        margin: 20px;
-      }
-      
-      .theme {
-        display: flex;
-        justify-content: flex-start;
-      }
-      
       .light {
         background: red;
         color: black;
@@ -43,6 +31,25 @@ export class MvClickAwayDemo extends LitElement {
       .dark {
         background: #373E48;
         color: #FFFFFF;
+      }
+      
+      fieldset > label, label > input {
+        cursor: pointer;
+      }
+      
+      fieldset {
+        width: 120px;
+        margin-left: 10px;
+        border:2px solid red;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;	
+        border-radius:8px;
+        color: #818181;
+      }
+      
+      legend {
+        font-weight: 500;
+        color: red;
       } 
     `;
   }
@@ -50,18 +57,18 @@ export class MvClickAwayDemo extends LitElement {
   constructor() {
     super();
     this.showMessage = false;
-    this.open = true;
+    this.theme = "light";
   }
 
   render() {
-    const iconColor = `color: ${this.open ? "yellow" : ""}`;
-    const boxClass = this.open ? "light" : "dark";
     return html`
-    <div class="theme">
-      <mv-fa icon="lightbulb" style="${iconColor}" @click=${this.toggleLightBulb}></mv-fa>
-    </div>
+    <fieldset>
+      <legend>Theme</legend>
+      <label><input type="radio" name="theme" value="light" checked @change="${this.radioChange}" />Light</label>
+      <label><input type="radio" name="theme" value="dark" @change="${this.radioChange}" />Dark</label>
+    </fieldset>
     <mv-click-away @clicked-away=${this.clickedAway}>
-      <div class="main ${boxClass}" @click=${this.clickedInside}>
+      <div class="main ${this.theme}" @click=${this.clickedInside}>
         ${!this.showMessage
           ? html`<h3>Click me to show hidden message!</h3>`
           : html``}
@@ -81,9 +88,9 @@ export class MvClickAwayDemo extends LitElement {
     this.showMessage = true;
   };
 
-  toggleLightBulb = () => {
-    this.open = !this.open;
-    if (this.open) {
+  radioChange = originalEvent => {
+    const { target: { value } } = originalEvent;
+    if (value === "light") {
       this.theme = "light";
     } else {
       this.theme = "dark";
