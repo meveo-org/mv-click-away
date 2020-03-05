@@ -64,8 +64,8 @@ export class MvClickAwayDemo extends LitElement {
     return html`
     <fieldset>
       <legend>Theme</legend>
-      <label><input type="radio" name="theme" value="light" checked @change="${this.radioChange}" />Light</label>
-      <label><input type="radio" name="theme" value="dark" @change="${this.radioChange}" />Dark</label>
+      <label><input type="radio" name="theme" value="light" checked @change="${this.changeTheme}" />Light</label>
+      <label><input type="radio" name="theme" value="dark" @change="${this.changeTheme}" />Dark</label>
     </fieldset>
     <mv-click-away @clicked-away=${this.clickedAway}>
       <div class="main ${this.theme}" @click=${this.clickedInside}>
@@ -88,13 +88,9 @@ export class MvClickAwayDemo extends LitElement {
     this.showMessage = true;
   };
 
-  radioChange = originalEvent => {
+  changeTheme = originalEvent => {
     const { target: { value } } = originalEvent;
-    if (value === "light") {
-      this.theme = "light";
-    } else {
-      this.theme = "dark";
-    }
+    this.theme = value;
   };
 }
 
