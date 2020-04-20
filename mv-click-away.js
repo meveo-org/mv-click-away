@@ -9,7 +9,10 @@ export class MvClickAway extends LitElement {
     return css`
       :host {
         font-family: var(--font-family, Arial);
-        font-size: var(--font-size-m, 10pt);				
+        font-size: var(--font-size-m, 10pt);
+      }
+      :host * {
+        display: inline-block;
       }
     `;
   }
@@ -29,7 +32,7 @@ export class MvClickAway extends LitElement {
   }
 
   isInPath = (path, element) => {
-    return path.some(node => node === element);
+    return path.some((node) => node === element);
   };
 
   isInParentNode = (node, element) => {
@@ -39,7 +42,7 @@ export class MvClickAway extends LitElement {
     return false;
   };
 
-  handleClickAway = event => {
+  handleClickAway = (event) => {
     const { path, originalTarget } = event;
     const eventPath = path || event.composedPath();
     let clickedAway = false;
@@ -51,6 +54,8 @@ export class MvClickAway extends LitElement {
     }
     if (clickedAway) {
       this.dispatchEvent(new CustomEvent("clicked-away"));
+    } else {
+      this.dispatchEvent(new CustomEvent("clicked-inside"));
     }
   };
 }
