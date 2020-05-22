@@ -11,9 +11,6 @@ export class MvClickAway extends LitElement {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 10pt);
       }
-      :host * {
-        display: inline-block;
-      }
     `;
   }
 
