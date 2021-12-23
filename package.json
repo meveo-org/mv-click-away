@@ -1,0 +1,22 @@
+{
+  "name": "@meveo-org/mv-click-away",
+  "version": "1.0.0",
+  "description": "MvClickAway is a Meveo component (based on lit-element) that registers a click event on the document allowing child components to listen to a custom event when a click outside the component is triggered.",
+  "main": "mv-click-away.js",
+  "scripts": {
+    "serve": "es-dev-server --node-resolve --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meveo-org/mv-click-away.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meveo-org/mv-click-away/issues"
+  },
+  "homepage": "https://github.com/meveo-org/mv-click-away#readme",
+  "devDependencies": {
+    "es-dev-server": "^1.46.1"
+  }
+}
